@@ -8,6 +8,11 @@ Write a function called addTwo that takes in an array and adds two to every valu
 
 const addTwo = (arr) => {
   // Solution code here...
+  let arr1 = [];
+  for (let i = 0 ; i < arr.length; i++) {
+    arr1.push(arr[i] + 2);
+  }
+  return arr1; 
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -19,6 +24,7 @@ Write a function named containsW that takes in a string. This function should us
 
 const containsW = (str) => {
   // Solution code here...
+  return /w/.exec(str) ? true : false; 
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -35,6 +41,7 @@ For example:
 
 const isNum = (input) => {
   // Solution code here...
+  return /[0-9]+/.exec(input) ? true : false;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -46,7 +53,8 @@ Write a function named containsWorld that takes in a string or number of any len
 
 const containsWorld = (input) => {
   // Solution code here...
-};
+  return /world/.exec(input) ? true : false;
+}; 
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -58,6 +66,13 @@ Return an array containing all the matches.
 
 const isCapitalized = (str) => {
   // Solution code here...
+  const regex = /\b([A-Z])([a-z]+)?\b/gm;
+  let arr = [];
+  let m;
+  while(( m = regex.exec(str)) !== null){
+    arr.push(m[0]);
+  }
+  return arr; 
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -67,6 +82,7 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 ------------------------------------------------------------------------------------------------ */
 const citiesAtoJ = (arr) => {
   // Solution code here...
+  return arr.filter((ele) => /^[A-J]/g.test(ele));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -83,6 +99,7 @@ Do not use the vertical bar (pipe) in your pattern.
 
 const matchMonth = (input) => {
   // Solution code here...
+  return /^[0-o]ct$/.test(input) ? true : /^[0-o]ctober/.test(input) ? true : false; 
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -97,6 +114,7 @@ The expected output of "Hello, and have a wonderful day!" is ["and ", "have ", "
 
 const noPunctuation = (str) => {
   // Solution code here...
+  return str.match(/[A-Za-z0-9]+\s/g);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -113,6 +131,7 @@ For example, 'Welcome to Code 301!' will return 'W_lc_m_ t_ C_d_ 301!'.
 
 let hangman = (str) => {
   // Solution code here...
+  return str.replace(/[aeiou]/gi, "_");
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -130,6 +149,7 @@ const seashells =
 
 const findShells = (str) => {
   // Solution code here...
+  return str.match(/([a-z]+)ells/gm); 
 };
 
 /* ------------------------------------------------------------------------------------------------
