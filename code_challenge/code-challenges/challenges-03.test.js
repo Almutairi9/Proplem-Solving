@@ -97,6 +97,7 @@ Here is an example of the input:
 
 const sortByPrice = (arr) => {
   // Solution code here...
+  return arr.sort((a, b) => a.price - b.price);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -109,6 +110,9 @@ For example, ['Alphabet', 'alphabet', 'carrot', 'Zebra'] is correctly sorted, an
 
 const alphabetizeBetter = (arr) => {
   // Solution code here...
+  return arr.sort((a ,b) => {
+    return a.toUpperCase().localeCompare(b.toUpperCase());
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
