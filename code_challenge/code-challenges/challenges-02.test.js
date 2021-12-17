@@ -10,6 +10,9 @@ Write a function named raisedToTheThird that takes in an array of numbers and re
 
 const raisedToTheThird = (arr) => {
   // Solution code here...
+  let arr1 = [];
+  arr.forEach(element => arr1.push(Math.pow(element,3)));
+    return arr1; 
 };
 
 /* ------------------------------------------------------------------------------------------------
