@@ -10,6 +10,10 @@ E.g. [4,2,7,5,9,2] -> 9
 ------------------------------------------------------------------------------------------------ */
 const maxInArray = (arr) => {
   // Solution code here...
+  return arr.reduce((acc, number) => {
+    if(number > acc) acc = number;
+    return acc;
+  }, 0); 
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -28,6 +32,14 @@ return: 23
 ------------------------------------------------------------------------------------------------ */
 const findMax = (matrix) => {
   // Solution code here...
+  return matrix.reduce((acc, arr) => {
+    const maxNumber = arr.reduce((acc, number) => {
+      if (number > acc) acc = number;
+      return acc;
+    }, 0);
+    if (maxNumber > acc) acc = maxNumber;
+    return acc;
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -46,6 +58,14 @@ return: 35
 ------------------------------------------------------------------------------------------------ */
 const totalSum = (matrix) => {
   // Solution code here...
+  return matrix.reduce((acc, arr) => {
+    const sum = arr.reduce((acc, number) => {
+      acc += number;
+      return acc;
+    }, 0);
+    acc +=sum;
+    return acc;
+  }, 0); 
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -85,6 +105,14 @@ const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
   // Solution code here...
+  stores.forEach((store) => {
+    store.forEach((cookies, index) => {
+      if (result[index]) result[index] += cookies;
+      else result.push(cookies);
+    });
+  });
+
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -99,6 +127,11 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 
 const salesData = (hours, data) => {
   // Solution code here...
+  let res = [];
+  data.forEach((cookies, index) => {
+    res.push({ sales: `${cookies} cookies`, time: hours[index]});
+  });
+  return res;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -136,6 +169,15 @@ const errands = [
 
 const howManyTreats = (arr) => {
   // Solution code here...
+  let total = 0;
+  arr.map((ele) => {
+    return ele.items.map((element) => {
+      if (element.name == "Threats") {
+        total = element.quantity;
+      }
+    });
+  });
+  return total; 
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -158,6 +200,11 @@ The top row of the board is considered row zero and row numbers increase as they
 
 const battleship = (board, row, col) => {
   //  Solution code here...
+  if(board[row][col] == "#"){
+    return "hit";
+  } else {
+    return "miss";
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -170,6 +217,15 @@ For example, the following input returns a product of 720: [[1,2], [3,4], [5,6]]
 
 const calculateProduct = (numbers) => {
   // Solution code here...
+  let total = 1;
+  numbers.map((ele) => {
+    let totalElement = 1;
+    ele.map((ele) => {
+      totalElement = totalElement *ele;
+    });
+    total = total * totalElement;
+  });
+  return total;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -190,6 +246,17 @@ const weeklyTemperatures = [
 
 const averageDailyTemperature = (weather) => {
   // Solution code here...
+  let total = 0;
+  let count = 0;
+  weather.map((ele) => {
+    let totalElement = 0;
+    ele.map((ele) => {
+      totalElement = totalElement + ele;
+      count ++ ;
+    });
+    total = total + totalElement;
+  });
+  return total / count;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -211,6 +278,15 @@ let lowestWeeklyTemperatureData = [
 
 const lowestWeeklyAverage = (weather) => {
   // Solution code here...
+  const averageArray = [];
+  weather.map((ele) => {
+    let total = 0;
+    ele.map((element) =>{
+      total += element;
+    });
+    averageArray.push(total / ele.length);
+  });
+  return Math.min(...averageArray);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -227,6 +303,16 @@ For example, excel('1,1,1\n4,4,4\n9,9,9') returns [3, 12, 27].
 
 const excel = (str) => {
   // Solution code here...
+  const arr1 = [];
+  const str1 = str.split("\n");
+  str1.map((ele) => {
+    let total = 0;
+    ele.split(",").map((element) => {
+      total += Number(ele);
+    });
+    arr1.push(total);
+  });
+  return arr1; 
 };
 
 /* ------------------------------------------------------------------------------------------------

@@ -8,6 +8,15 @@ Write a function named longestString that takes in an array of strings and retur
 
 const longestString = (arr) => {
   // Solution code here...
+  let long = 0;
+  let longest;
+  for (let i = 0; i < arr.length; i ++) {
+    if( arr[i].length > long){
+    long = arr[i].length;
+    longest = arr[i];
+  }
+}
+return arr.indexOf(longest); 
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -20,6 +29,9 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['t', 
 
 const firstLetters = (arr) => {
   // Solution code here...
+  return arr.map((ele) => {
+    return ele.slice(0, 1);
+  }); 
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -32,8 +44,11 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['this
 
 const findHappiness = (arr) => {
   // Solution code here...
+  return arr.filter((ele) => {
+    return ele.indexOf(":)") > -1;
+  });
 };
-
+ 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
 
@@ -44,6 +59,14 @@ For example, (123) 456-7890 returns 1234567890
 
 const standardizePhoneNumbers = (arr) => {
   // Solution code here...
+  return arr.map((ele) => {
+    let ele1 = ele.split("");
+    ele1.splice(ele1.indexOf("("), 1);
+    ele1.splice(ele1.indexOf(" "), 1);
+    ele1.splice(ele1.indexOf(")"), 1);
+    ele1.splice(ele1.indexOf("-"), 1);
+    return ele1.join("");
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -56,6 +79,12 @@ For example, 'abcdefg' returns 'bdf'
 
 const onlyOddChars = (str) => {
   // Solution code here...
+  return str.split("").filter((ele, i) => {
+    if(i % 2 != 0){
+      return ele;
+    }
+  })
+  .join(""); 
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -66,6 +95,19 @@ Write a function named allHappy that takes in an array of strings and returns a 
 
 const allHappy = (arr) => {
   // Solution code here...
+  let total = 0;
+  let total2 = arr.length;
+  let bool = false;
+  arr.map((ele) => {
+    let ele1 = ele.split("");
+    if( ele1.indexOf(")") > -1) {
+      total += 1;
+    }
+  });
+  if(total2 == total){
+    bool = true;
+  }
+  return bool; 
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -76,6 +118,13 @@ Write a function named findAnything that takes in an array of strings, along wit
 
 const findAnything = (arr, target) => {
   // Solution code here...
+  let total = [];
+  arr.map((ele) => {
+    if (ele.indexOf(target) > -1) {
+      total.push(ele);
+    }
+  });
+  return total;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -86,6 +135,16 @@ Write a function named findEvery that takes in an array of strings, along with a
 
 const findEvery = (arr, target) => {
   // Solution code here...
+  let total = 0;
+  arr.map((ele) => {
+    if(ele.indexOf(target) > -1) {
+      total += 1;
+    }
+  });
+  if (total == arr.length){
+    return true;
+  } 
+  return false;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -102,6 +161,17 @@ For example, [['Brook Testing', 'Actual Person'], ['Human Person', 'Brook again'
 
 const unenrollBrook = (arr) => {
   // Solution code here...
+  const arr1 = [];
+  arr.map((ele) => {
+    const arrS = [];
+    ele.map((ele1) => {
+      if (!ele1.includes("Brook")){
+        arrS.push(ele1);
+      }
+    });
+    arr1.push(arrS);
+  });
+  return arr1;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -137,6 +207,17 @@ const daysOfWeek = [
 
 const sortByDay = (arr) => {
   // Solution code here...
+  let arr1 = [];
+  daysOfWeek.map((ele) => {
+    let arrS = [];
+    arr.map((ele1) => {
+      if(ele1.includes(ele)){
+        arrS.push(ele1);
+      }
+    });
+    arr1.push(arrS);
+  });
+  return arr1; 
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -149,6 +230,11 @@ For example, ['abcd', 'efgh', 'ijkl', 'mnop'] returns ['a', 'f', 'k', 'p']
 
 const characterByIndex = (arr) => {
   // Solution code here...
+  const arr1 = [];
+  for(let i = 0; i < arr.length; i++){
+    arr1.push(arr[i].slice(i, i+1));
+  }
+  return arr1; 
 };
 
 /* ------------------------------------------------------------------------------------------------
